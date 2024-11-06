@@ -1,0 +1,138 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap');
+
+.new-collections {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  width: 100%; /* Full width for the container */
+}
+
+.new-collections h1 {
+  font-size: 2rem;
+  margin-bottom: 10px;
+  color: #ffffff;
+}
+
+.collections {
+  display: flex;
+  flex-wrap: wrap; /* Ensures items wrap to the next line */
+  gap: 20px; /* Space between items */
+  width: 100%; /* Full width for the collection container */
+  justify-content: space-between; /* Spreads items evenly across the row */
+}
+
+.car-card {
+  font-family: 'Playfair Display', serif;
+  flex: 1 1 30%; /* Cards take up approximately 30% of the row */
+  min-width: 300px; /* Minimum width for each card */
+  max-width: 400px; /* Limit the maximum width */
+  border: 2px solid #e0e0e0;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  background-color: #fff;
+  transition: transform 0.3s ease; /* Animation effect */
+}
+
+.car-card:hover {
+  transform: scale(1.05); /* Scale the card on hover */
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2); /* Increase shadow for a 3D effect */
+}
+
+.car-image {
+  width: 100%;
+  height: auto;
+  border-bottom: 2px solid #e0e0e0;
+}
+
+.content {
+  padding: 15px;
+}
+
+.content h2 {
+  font-size: 22px;
+  margin: 10px 0;
+  color: #333;
+}
+
+.price {
+  font-size: 24px;
+  color: #ff4c4c;
+  font-weight: bold;
+  margin: 10px 0;
+}
+
+.details {
+  color: #555;
+  margin-bottom: 15px;
+}
+
+button {
+  background-color: #ff4c4c;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s; /* Animation for button */
+}
+
+button:hover {
+  background-color: #e63939;
+  transform: translateY(-2px); /* Move the button up slightly on hover */
+}
+
+/* Media Queries */
+@media(max-width:1280px) {
+  .new-collections h1 {
+    font-size: 40px;
+  }
+  .new-collections hr {
+    width: 160px;
+    height: 4px;
+  }
+  .collections {
+    gap: 20px;
+    margin-top: 30px;
+  }
+}
+
+@media(max-width:1024px) {
+  .new-collections h1 {
+    font-size: 30px;
+  }
+  .new-collections hr {
+    width: 120px;
+    height: 3px;
+  }
+  .collections {
+    gap: 15px;
+    margin-top: 20px;
+  }
+}
+
+@media(max-width:800px) {
+  .new-collections {
+    gap: 6px;
+  }
+  .new-collections h1 {
+    font-size: 20px;
+  }
+  .new-collections hr {
+    width: 100px;
+  }
+  .collections {
+    gap: 5px;
+  }
+}
+
+@media (max-width:500px) {
+  .collections {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+}

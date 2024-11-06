@@ -1,0 +1,63 @@
+/* Hero section styling */
+.hero {
+    height: 100vh;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    text-align: center;
+    position: relative;
+    padding-bottom: 150px; /* Shtoni hapësirë për formularin poshtë */
+}
+
+.hero-content {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.hero-content h1 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.hero-content p {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1rem;
+    font-weight: 300;
+    margin-bottom: 20px;
+}
+
+.book-button {
+    background: rgb(255, 65, 65);
+    color: white;
+    padding: 12px 30px;
+    font-size: 1rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+
+
+.form-button {
+    grid-column: span 3;
+    padding: 12px; /* Rritur hapësira për butonin e formularit */
+    background: rgb(255, 65, 65);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.form-button:hover {
+    background-color: #218838;
+}

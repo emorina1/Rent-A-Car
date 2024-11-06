@@ -1,0 +1,105 @@
+.shopcategory-banner{
+    display: block;
+    margin: 30px auto;
+    width: 82%;
+}
+.shopcategory-indexSort{
+    display: flex;
+    margin: 0px 170px;
+    justify-content: space-between;
+    align-items: center;
+}
+.shopcategory-sort{
+    padding: 10px 20px;
+    border-radius: 40px;
+    border: 1px solid #888;
+
+}
+.shopcategory-indexSort p span{
+   font-weight: 600;
+}
+.shopcategory-products{
+    margin: 20px 170px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    row-gap: 80px;
+  
+}
+.shopcategory-loadmore{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 150px auto;
+    width:233px;
+    height: 69px;
+    border-radius: 75px;
+    background: #353333;
+    color: #787878;
+    font-size: 18px;
+    font-weight: 500;
+}
+.shopcategory-products .item {
+    background-color: transparent;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: white;
+    box-shadow: 0 8px 16px rgba(44, 43, 43, 0.2); /* Hije më e theksuar */
+    transition: box-shadow 0.3s ease;
+}
+
+.shopcategory-products .item:hover {
+    box-shadow: 0 16px 32px rgba(72, 24, 4, 0.538); /* Hije më e madhe dhe më e theksuar në hover */
+}
+
+@media (max-width:1280px){
+    .shopcategory-banner{
+        margin: 20px auto;
+        width: 90%;
+    }
+    .shopcategory-indexSort{
+        width: 90%;
+        margin: auto;
+    }
+    .shopcategory-sort{
+        padding: 5px 10px;
+        font-size: 12px;
+    }
+    .shopcategory-indexSort p{
+        font-size: 12px;
+
+    }
+    .shopcategory-products{
+        width: 90%;
+        margin: 10px auto;
+        row-gap: 40px;
+    }
+    .shopcategory-products .item{
+        margin: auto;
+    }
+    .shopcategory-loadmore{
+        margin: 100px auto;
+        width: 200px;
+        height: 60px;
+        font-size: 16px;
+    }
+}
+@media(max-width:800px){
+    .shopcategory-banner{
+        width: 95%;
+    }
+    .shopcategory-products{
+        width: 95%;
+    }
+    .shopcategory-loadmore{
+        margin: 60px auto;
+        width: 150px;
+        height: 40px;
+        font-size: 13px;
+    }
+}
+@media(max-width:500px){
+    
+    .shopcategory-products{
+        grid-template-columns:1fr 1fr ;
+    }
+}
