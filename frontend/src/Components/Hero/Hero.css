@@ -1,63 +1,86 @@
-/* Hero section styling */
 .hero {
-    height: 100vh;
-    background-repeat: no-repeat;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
     background-size: cover;
     background-position: center;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    color: white;
-    text-align: center;
-    position: relative;
-    padding-bottom: 150px; /* Shtoni hapësirë për formularin poshtë */
+    height: 100vh;
+    color: #fff;
+    padding: 0 30px; /* Space on both sides */
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    z-index: 1;
 }
 
 .hero-content {
-    text-align: center;
-    margin-bottom: 20px;
+    position: relative;
+    z-index: 2;
+    max-width: 50%;
+    padding: 20px;
 }
 
 .hero-content h1 {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 2.5rem;
-    font-weight: 700;
+    font-size: 3em;
     margin-bottom: 10px;
 }
 
 .hero-content p {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 1rem;
-    font-weight: 300;
+    font-size: 1.2em;
     margin-bottom: 20px;
 }
 
+.booking-form {
+    position: relative;
+    z-index: 2;
+    background-color:transparent; /* Semi-transparent background */
+    padding: 30px; /* Increase padding to make the form larger */
+    border-radius: 8px;
+    max-width: 700px; /* Increase width to make the form wider */
+    margin-left: 1500px; /* Push the form to the far right */
+    margin-top: 20px; /* Adds space above the form */
+    font-size: 1.1em; /* Increase font size for better readability */
+}
+
+.booking-form h2 {
+    margin-bottom: 15px;
+    color: #fff;
+    font-size: 1.5em; /* Increase title size */
+}
+
+.booking-form label {
+    display: block;
+    margin-bottom: 5px;
+    color: #ddd;
+}
+
+.booking-form select {
+    width: 100%;
+    padding: 10px; /* Increased padding for larger form controls */
+    margin-bottom: 15px; /* Increase space between fields */
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
 .book-button {
-    background: rgb(255, 65, 65);
-    color: white;
-    padding: 12px 30px;
-    font-size: 1rem;
+    background-color: #ffc107; /* Yellow color */
+    color: #333;
+    padding: 12px 25px; /* Increase button size */
     border: none;
-    border-radius: 5px;
+    border-radius: 4px;
     cursor: pointer;
-    transition: background 0.3s;
+    font-weight: bold;
+    width: 100%;
+    font-size: 1.2em; /* Make the button text bigger */
 }
 
-
-
-.form-button {
-    grid-column: span 3;
-    padding: 12px; /* Rritur hapësira për butonin e formularit */
-    background: rgb(255, 65, 65);
-    color: white;
-    border: none;
-    border-radius: 5px;
-    font-size: 1rem;
-    cursor: pointer;
-    transition: background 0.3s;
-}
-
-.form-button:hover {
-    background-color: #218838;
+.book-button:hover {
+    background-color: #e0a800; /* Slightly darker yellow */
 }

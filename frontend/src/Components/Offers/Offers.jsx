@@ -1,45 +1,51 @@
 import React from 'react';
 import './Offers.css';
-import exclusive_image from '../Assets/Frontend_Assets/exclusive_image.png';
+import carImage from '../Assets/Frontend_Assets/car2.png'; // Placeholder image for the car
 
 const Offers = () => {
-  const handleSubmit = (event) => {
-    event.preventDefault(); // Prevent the default form submission
-    // You can add your form submission logic here
-  };
-
   return (
-    <div className='offers'>
-      {/* Background image set via CSS; remove this img tag to avoid redundancy */}
-      {/* <img src={exclusive_image} alt="Exclusive Offers" className="exclusive-image" /> */}
-
-      <form onSubmit={handleSubmit} className="booking-form"> {/* Wrap features in a form */}
-        <div className="features">
-          <div className="feature-item">
-            <label htmlFor="name">Emri:</label> {/* Name field */}
-            <input type="text" id="name" name="name" required placeholder="Shkruaj emrin tuaj" />
-          </div>
-
-          <div className="feature-item">
-            <label htmlFor="phone">Numri i Telefonit:</label> {/* Phone number field */}
-            <input type="tel" id="phone" name="phone" required placeholder="Shkruaj numrin e telefonit" />
-          </div>
+    <div className="offers-container">
+      {/* Content Section */}
+      <div className="offers-content">
+        {/* Text Section */}
+        <div className="offers-text">
+          <h1>A little care for your dream vehicle</h1>
+          <p>Lorem ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a gallery of type and scrambled it to make a type specimen book.
+          Lorem ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a gallery of type and scrambled it to make a type specimen book
+          Lorem ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a gallery of type and scrambled it to make a type specimen book
+          Lorem ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a gallery of type and scrambled it to make a type specimen book
+          Lorem ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a gallery of type and scrambled it to make a type specimen book
+          </p>
+          <button className="offers-get-started-button">Get Started</button>
           
-          <div className="feature-item">
-            <label htmlFor="pickup-date">Data e Marrjes:</label> {/* Use htmlFor instead of for */}
-            <input type="date" id="pickup-date" name="pickup-date" required />
+          {/* Stats Section */}
+          <div className="offers-stats">
+            <div className="stat">
+              <h3>30+</h3>
+              <p>Happy Customers</p>
+            </div>
+            <div className="stat">
+              <h3>50+</h3>
+              <p>Projects Completed</p>
+            </div>
+            <div className="stat">
+              <h3>60+</h3>
+              <p>Service Areas</p>
+            </div>
+            <div className="stat">
+              <h3>400+</h3>
+              <p>Service Providers</p>
+            </div>
           </div>
-          
-          <div className="feature-item">
-            <label htmlFor="return-date">Data e Kthimit:</label>
-            <input type="date" id="return-date" name="return-date" required />
-          </div>
-          
         </div>
-        <button type="submit" className="form-button">Dërgo</button> {/* Submit button */}
-      </form>
+
+        {/* Image Section */}
+        <div className="car-image-container">
+          <img src={carImage} alt="Dream Vehicle" className="car-image" />
+        </div>
+      </div>
     </div>
   );
-}
+};
 
 export default Offers;

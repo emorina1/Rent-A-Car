@@ -1,160 +1,77 @@
 .popular {
-    display: flex;
-    flex-direction: row; /* Arrange items in a row */
-    align-items: center; /* Center items vertically */
-    justify-content: center; /* Center items horizontally */
-    height: 100vh; /* Full viewport height */
-    font-family: 'Playfair Display', serif; /* Font style */
-    padding: 30px; /* Padding around the container */
-    gap: 30px; /* Space between flex items */
-    background: linear-gradient(65.5deg, rgb(23, 205, 205) -15.1%, rgb(23, 25, 95) 71.5%); /* Gradient background */
-    color: #000000; /* Dark text color for readability */
-    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6); /* Shadow effect */
-    border-radius: 20px; /* Rounded corners */
-    overflow: hidden; /* Hide overflow */
+    text-align: center;
+    padding: 50px;
+    max-width: 2000px;
+    margin: 0 auto;
+    background-color:  #f2f2f2;
+    border-radius: 15px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
    
-}
-
-.slider {
-    flex: 1; /* Grow to fill available space */
-    display: flex; /* Flexbox layout */
-    justify-content: center; /* Center content */
-    align-items: center; /* Center content */
-    height: 600px; /* Set fixed height */
-    position: relative; /* Position relative for absolute children */
-    overflow: hidden; /* Hide overflow */
-
-    transition: transform 0.5s ease; /* Transition for transform property */
-}
-
-.slider img {
-    width: 100%; /* Full width */
-    height: 100%; /* Full height */
-    object-fit: cover; /* Cover the area */
-    transform: scale(1.1); /* Initial scale */
-    transition: transform 0.5s ease; /* Smooth scaling */
-}
-
-.slider:hover img {
-    transform: scale(1); /* Scale down on hover */
-}
-
-.product-info {
-    flex: 1; /* Grow to fill available space */
-    display: flex; /* Flexbox layout */
-    flex-direction: column; /* Column layout */
-    justify-content: center; /* Center content vertically */
-    text-align: left; /* Left-align text */
-    padding: 40px; /* Increased padding for more space */
-    height: 400px; /* Set a fixed height for a square-like shape */
-    opacity: 0; /* Initially hidden */
-    transform: translateY(20px); /* Initial position */
-    animation: fadeInText 0.8s ease forwards; /* Fade-in animation */
-    box-shadow: 0 20px 40px rgba(237, 236, 236, 0.5); /* Increased shadow size and opacity */
-    background: rgba(27, 26, 26, 0.8); /* Semi-transparent background color */
-    border-radius: 10px; /* Optional: rounded corners for the background */
-}
-/* New description styling */
-.product-info .description {
-    font-size: 1.5rem; /* Increased font size for description */
-    color: #ffffff; /* White color for description */
-    margin-top: 10px; /* Space above description */
-}
-
-
-
-
-
-@keyframes fadeInText {
-    0% {
-        opacity: 0; /* Start transparent */
-        transform: translateY(20px); /* Move down */
-    }
-    100% {
-        opacity: 1; /* Fully visible */
-        transform: translateY(0); /* Move to original position */
-    }
-}
-
-/* Individual text styles */
-.product-info h2 {
-    font-size: 2.5rem; /* Increased heading size */
-    margin-bottom: 10px; /* Space below heading */
-    color: #ffffff; /* White color for heading */
-}
-
-.price {
-    font-size: 8rem; /* Increased price size */
-    margin-top: 10px; /* Space above price */
-    color: #00e0ff; /* Bright color for price */
-}
-
-.additional-text {
-    font-size: 1.2rem; /* Increased additional text size */
-    margin-top: 10px; /* Space above additional text */
-    color: #c0c0c0; /* Light gray color */
-}
-
-/* Slider button styling */
-.slider .prev,
-.slider .next {
-    position: absolute; /* Absolute positioning */
-    top: 50%; /* Center vertically */
-    transform: translateY(-50%); /* Adjust for vertical centering */
-    background: rgba(0, 0, 0, 0.6); /* Dark background */
-    color: white; /* White text color */
-    border: none; /* No border */
-    padding: 12px; /* Padding around buttons */
-    cursor: pointer; /* Pointer cursor on hover */
-    font-size: 1.5rem; /* Font size */
-    z-index: 10; /* Layer above other content */
-    border-radius: 50%; /* Circular buttons */
-    transition: background 0.3s ease; /* Smooth background change */
-}
-
-.slider .prev:hover,
-.slider .next:hover {
-    background: rgba(0, 0, 0, 0.8); /* Darker background on hover */
-}
-
-.slider .prev {
-    left: 15px; /* Position to the left */
-}
-
-.slider .next {
-    right: 15px; /* Position to the right */
-}
-
-/* Responsive adjustments */
-@media (max-width: 1024px) {
-    .popular {
-        flex-direction: column; /* Stack items vertically */
-        height: auto; /* Auto height */
-        gap: 20px; /* Reduced gap */
-        padding: 20px; /* Reduced padding */
-    }
-    .slider, .product-info {
-        width: 100%; /* Full width */
-        text-align: center; /* Center text */
-        flex: none; /* No flex growth */
-    }
-    .product-info h2 {
-        font-size: 2rem; /* Adjusted heading size for smaller screens */
-    }
-    .price {
-        font-size: 1.5rem; /* Adjusted price size for smaller screens */
-    }
-    .additional-text {
-        font-size: 1rem; /* Adjusted additional text size for smaller screens */
-    }
-}
-
-@media (max-width: 768px) {
-    .slider {
-        height: 400px; /* Reduced height for smaller screens */
-    }
-    .slider .prev, .slider .next {
-        font-size: 1.2rem; /* Smaller button size */
-        padding: 8px; /* Reduced padding */
-    }
-}
+  }
+  
+  h1 {
+    font-size: 26px;
+    margin-bottom: 20px;
+    color: #333;
+  }
+  
+  .slider {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    margin: 20px 0;
+  }
+  
+  .image-container {
+   
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.7s ease-in-out;
+  }
+  
+  .car-image-container {
+    flex: 1;
+    position: relative;
+    transition: transform 0.7s ease;
+  }
+  
+  .car-image {
+  
+    width: 100%;
+    transition: transform 0.7s ease;
+  }
+  
+  .car-image-container.active .car-image {
+    transform: scale(1.1); /* Afrohuni imazhi */
+  }
+  
+  .prev, .next {
+    position: absolute;
+    top: 50%;
+    background-color: #333;
+    color: #fff;
+    font-size: 30px;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    border-radius: 50%;
+    transform: translateY(-50%);
+    opacity: 0.8;
+    z-index: 10; /* Sigurohuni që butonat të jenë mbi imazhe */
+  }
+  
+  .prev:hover, .next:hover {
+    opacity: 1;
+  }
+  
+  .prev {
+    left: 20px; /* Afrohuni pak nga skaji majtë */
+  }
+  
+  .next {
+    right: 20px; /* Afrohuni pak nga skaji djathtë */
+  }
+  
