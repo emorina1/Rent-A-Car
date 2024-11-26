@@ -5,12 +5,12 @@ body {
 }
 
 .navbar {
-    background: white; /* Transparent background */
+    background: transparent; /* Transparent background */
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 16px 32px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Shadow for emphasis */
+    box-shadow: 0 2px 25px rgba(0, 0, 0, 0.1); /* Shadow for emphasis */
     width: 100%;
     position: fixed;  /* Fixed navbar */
     top: 0;
@@ -57,7 +57,7 @@ body {
 }
 
 .nav-menu li a {
-    color: #171717; /* Set text color to black */
+    color: #fffefe; /* Set text color to black */
     transition: color 0.3s ease;
 }
 

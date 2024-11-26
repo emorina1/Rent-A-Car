@@ -1,66 +1,46 @@
-.item{
-    width: 280px;
-}
-.item img{
-    width: 280px;
-}
-.item p{
-    margin: 6px 0px;
-}
-.item-prices{
-    display: flex;
-    gap: 20px;
-
-}
-.item-prices-new{
-    color: #374151;
-    font-size: 18px;
-    font-weight: 600;
-}
-.item-prices-old{
-    color: #8c8c8c;
-    font-size: 18px;
-    font-weight: 500;
-    text-decoration: line-through;
-}
-.item:hover{
+.item {
+    background-color: rgb(247, 247, 242);
+    border: 1px solid #ddd;
+    padding: 20px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    margin: 15px;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    text-align: center;
+  }
+  
+  .item:hover {
     transform: scale(1.05);
-    transition: 0.6s;
-}
-@media(max-widht:1280px){
-     .item{
-        width: 220px;
-        font-size: 14px;
-     }
-     .item img{
-        width: 220px;
-     }
-     .item-prices-old{
-        font-size: 13px;
-     }
-
-}
-@media(max-widht:800px){
-    .item{
-       width: 120px;
-       font-size: 12px;
-    }
-    .item img{
-       width: 120px;
-    }
-    .item-prices-old{
-       font-size: 12px;
-    }
-
-}
-@media(max-widht:500px){
-    .item{
-       width: 160px;
-      
-    }
-    .item img{
-       width: 160px;
-    }
-
-
-}
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  }
+  
+  .item img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+  }
+  
+  .item-prices {
+    margin-top: 15px;
+  }
+  
+  .item-prices-new {
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #2a9d8f;
+  }
+  
+  .item-prices-old {
+    font-size: 1em;
+    color: #888;
+    text-decoration: line-through;
+    margin-left: 10px;
+  }
+  .item-description {
+    margin-top: 10px;
+    font-size: 0.9em;
+    color: #555;  /* Ngjyrë gri e lehtë për tekstin */
+    line-height: 1.5;  /* Ndërmjetësim më të madh për lexim më të lehtë */
+    text-align: center;  /* Ndërmjetëson përshkrimin */
+  }
+  
