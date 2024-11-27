@@ -1,3 +1,4 @@
+// importimi i imazheve të makinave
 import p1_img from "./product_1.png";
 import p2_img from "./product_2.png";
 import p3_img from "./product_3.png";
@@ -38,367 +39,367 @@ import p36_img from "./product_36.png";
 let all_product = [
   {
     id: 1,
-    name: "Rent a Car",
-    category: "skincare",
+    name: "Luxury Sedan Car",
+    category: "sedan",
     image: p1_img,
     new_price: 50.0,
     old_price: 80.5,
-    description: "A high-quality skincare product to hydrate your skin."  ,
+    description: "Rent this luxury sedan for a smooth and comfortable ride.",
     year: 2022,
-    button: "Rent Now"// Përshkrimi i produktit
+    button: "Rent Now"
   },
   {
     id: 2,
-    name: "Rent a Car",
-    category: "skincare",
+    name: "High-Speed Sports Car",
+    category: "sports",
     image: p2_img,
     new_price: 85.0,
     old_price: 120.5,
-    description: "A high-quality skincare product to hydrate your skin." ,
-    year: 2022 // Përshkrimi i produktit
+    description: "Experience the thrill with our high-performance sports car.",
+    year: 2022
   },
   {
     id: 3,
-    name: "Rent a Car",
-    category: "skincare",
+    name: "Family SUV",
+    category: "suv",
     image: p3_img,
     new_price: 60.0,
     old_price: 100.5,
-    description: "A high-quality skincare product to hydrate your skin.",
-    year: 2022  // Përshkrimi i produktit
+    description: "Perfect for family trips with ample space and comfort.",
+    year: 2022
   },
   {
     id: 4,
-    name: "Rent a Car",
-    category: "skincare",
+    name: "Luxury Sports Car",
+    category: "luxury",
     image: p4_img,
     new_price: 100.0,
     old_price: 150.0,
-    description: "A high-quality skincare product to hydrate your skin." ,
-    year: 2022 // Përshkrimi i produktit
+    description: "Rent this luxurious sports car for a premium experience.",
+    year: 2022
   },
   {
     id: 5,
-    name: "Aesop Product",
-    category: "skincare",
+    name: "Convertible Car",
+    category: "convertible",
     image: p5_img,
     new_price: 85.0,
     old_price: 120.5,
-    description: "A high-quality skincare product to hydrate your skin."  ,
-    year: 2022// Përshkrimi i produktit
+    description: "Enjoy the open road with this stylish convertible.",
+    year: 2022
   },
   {
     id: 6,
-    name: "Aesop Product",
-    category: "skincare",
+    name: "Eco-Friendly Electric Car",
+    category: "electric",
     image: p6_img,
-    new_price: 85.0,
-    old_price: 120.5,
-    description: "A high-quality skincare product to hydrate your skin."  ,
-    year: 2022// Përshkrimi i produktit
+    new_price: 75.0,
+    old_price: 110.5,
+    description: "Rent an electric car for a sustainable and smooth ride.",
+    year: 2022
   },
   {
     id: 7,
-    name: "Aesop Product",
-    category: "skincare",
+    name: "Luxury Sedan",
+    category: "sedan",
     image: p7_img,
-    new_price: 85.0,
-    old_price: 120.5,
-    description: "A high-quality skincare product to hydrate your skin.",
-    year: 2022  // Përshkrimi i produktit
+    new_price: 60.0,
+    old_price: 90.0,
+    description: "A premium sedan car for luxury and comfort.",
+    year: 2022
   },
   {
     id: 8,
-    name: "Aesop Product",
-    category: "skincare",
+    name: "Premium Sports Car",
+    category: "sports",
     image: p8_img,
-    new_price: 85.0,
-    old_price: 120.5,
-    description: "A high-quality skincare product to hydrate your skin." ,
-    year: 2022 // Përshkrimi i produktit
+    new_price: 95.0,
+    old_price: 140.0,
+    description: "Drive in style with this high-end sports car.",
+    year: 2022
   },
   {
     id: 9,
-    name: "Aesop Product",
-    category: "skincare",
+    name: "Luxury SUV",
+    category: "suv",
     image: p9_img,
-    new_price: 85.0,
-    old_price: 120.5,
-    description: "A high-quality skincare product to hydrate your skin." ,
-    year: 2022 // Përshkrimi i produktit
+    new_price: 80.0,
+    old_price: 130.0,
+    description: "A luxury SUV for both style and performance.",
+    year: 2022
   },
   {
     id: 10,
-    name: "Aesop Product",
-    category: "skincare",
+    name: "Luxury Sports Car",
+    category: "luxury",
     image: p10_img,
-    new_price: 85.0,
-    old_price: 120.5,
-    description: "A high-quality skincare product to hydrate your skin." ,
-    year: 2022 // Përshkrimi i produktit
+    new_price: 150.0,
+    old_price: 200.5,
+    description: "A premium sports car for the discerning driver.",
+    year: 2022
   },
   {
     id: 11,
-    name: "Aesop Product",
-    category: "skincare",
+    name: "High-End Sedan",
+    category: "sedan",
     image: p11_img,
-    new_price: 85.0,
-    old_price: 120.5,
-    description: "A high-quality skincare product to hydrate your skin." ,
-    year: 2022 // Përshkrimi i produktit
+    new_price: 70.0,
+    old_price: 110.5,
+    description: "A high-end sedan for those who prefer elegance and comfort.",
+    year: 2022
   },
   {
     id: 12,
-    name: "Aesop Product",
-    category: "skincare",
+    name: "Classic Convertible",
+    category: "convertible",
     image: p12_img,
-    new_price: 85.0,
-    old_price: 120.5,
-    description: "A high-quality skincare product to hydrate your skin.",
-    year: 2022  // Përshkrimi i produktit
+    new_price: 95.0,
+    old_price: 145.0,
+    description: "Rent this classic convertible for an unforgettable ride.",
+    year: 2022
   },
   {
     id: 13,
-    name: "Aesop Product",
-    category: "hand",
+    name: "Electric Sedan",
+    category: "electric",
     image: p13_img,
     new_price: 85.0,
     old_price: 120.5,
-    description: "A high-quality skincare product to hydrate your skin.",
-    year: 2022  // Përshkrimi i produktit
+    description: "An electric sedan for an eco-conscious yet luxurious ride.",
+    year: 2022
   },
   {
     id: 14,
-    name: "Aesop Product",
-    category: "hand",
+    name: "Luxury SUV",
+    category: "suv",
     image: p14_img,
-    new_price: 85.0,
-    old_price: 120.5,
-    description: "A high-quality skincare product to hydrate your skin." ,
-    year: 2022 // Përshkrimi i produktit
+    new_price: 90.0,
+    old_price: 130.0,
+    description: "A top-of-the-line luxury SUV for a smooth drive.",
+    year: 2022
   },
   {
     id: 15,
-    name: "Aesop Product",
-    category: "hand",
+    name: "Electric SUV",
+    category: "electric",
     image: p15_img,
-    new_price: 85.0,
-    old_price: 120.5, 
-    description: "A high-quality skincare product to hydrate your skin." ,
-    year: 2022 // Përshkrimi i produktit
+    new_price: 100.0,
+    old_price: 140.5,
+    description: "Experience power and eco-friendliness with this electric SUV.",
+    year: 2022
   },
   {
     id: 16,
-    name: "Aesop Product",
-    category: "hand",
+    name: "Sporty Convertible",
+    category: "convertible",
     image: p16_img,
-    new_price: 85.0,
-    old_price: 120.5,
-    description: "A high-quality skincare product to hydrate your skin." ,
-    year: 2022 // Përshkrimi i produktit
+    new_price: 110.0,
+    old_price: 160.5,
+    description: "Drive through the city in a stylish sporty convertible.",
+    year: 2022
   },
   {
     id: 17,
-    name: "Aesop Product",
-    category: "hand",
+    name: "Sedan for Rent",
+    category: "sedan",
     image: p17_img,
-    new_price: 85.0,
-    old_price: 120.5,
-    description: "A high-quality skincare product to hydrate your skin." ,
-    year: 2022 // Përshkrimi i produktit
+    new_price: 55.0,
+    old_price: 85.0,
+    description: "A comfortable sedan ideal for city driving.",
+    year: 2022
   },
   {
     id: 18,
-    name: "Aesop Product",
-    category: "hand",
+    name: "Sports Car Experience",
+    category: "sports",
     image: p18_img,
-    new_price: 85.0,
-    old_price: 120.5,
-    description: "A high-quality skincare product to hydrate your skin."  ,
-    year: 2022// Përshkrimi i produktit
+    new_price: 125.0,
+    old_price: 180.0,
+    description: "Feel the thrill with our high-speed sports car rental.",
+    year: 2022
   },
   {
     id: 19,
-    name: "Aesop Product",
-    category: "hand",
+    name: "Luxury Electric Car",
+    category: "electric",
     image: p19_img,
-    new_price: 85.0,
-    old_price: 120.5,
-    description: "A high-quality skincare product to hydrate your skin." ,
-    year: 2022 // Përshkrimi i produktit
+    new_price: 120.0,
+    old_price: 160.0,
+    description: "The perfect fusion of luxury and sustainability in an electric car.",
+    year: 2022
   },
   {
     id: 20,
-    name: "Aesop Product",
-    category: "hand",
+    name: "Convertible Luxury Ride",
+    category: "convertible",
     image: p20_img,
-    new_price: 85.0,
-    old_price: 120.5,
-    description: "A high-quality skincare product to hydrate your skin." ,
-    year: 2022 // Përshkrimi i produktit
+    new_price: 130.0,
+    old_price: 175.0,
+    description: "Enjoy a luxurious convertible ride with the top down.",
+    year: 2022
   },
   {
     id: 21,
-    name: "Aesop Product",
-    category: "hand",
+    name: "SUV Comfort",
+    category: "suv",
     image: p21_img,
-    new_price: 85.0,
-    old_price: 120.5,
-    description: "A high-quality skincare product to hydrate your skin." ,
-    year: 2022 // Përshkrimi i produktit
+    new_price: 95.0,
+    old_price: 140.0,
+    description: "Rent an SUV for a spacious and comfortable family experience.",
+    year: 2022
   },
   {
     id: 22,
-    name: "Aesop Product",
-    category: "hand",
+    name: "Luxury Electric SUV",
+    category: "electric",
     image: p22_img,
-    new_price: 85.0,
-    old_price: 120.5,
-    description: "A high-quality skincare product to hydrate your skin."  ,
-    year: 2022// Përshkrimi i produktit
+    new_price: 140.0,
+    old_price: 190.0,
+    description: "A luxury electric SUV that combines power, elegance, and sustainability.",
+    year: 2022
   },
   {
     id: 23,
-    name: "Aesop Product",
-    category: "hand",
+    name: "Premium Sports Coupe",
+    category: "sports",
     image: p23_img,
-    new_price: 85.0,
-    old_price: 120.5,
-    description: "A high-quality skincare product to hydrate your skin.",
-    year: 2022  // Përshkrimi i produktit
+    new_price: 120.0,
+    old_price: 160.0,
+    description: "A premium sports coupe with a dynamic performance.",
+    year: 2022
   },
   {
     id: 24,
-    name: "Aesop Product",
-    category: "hand",
+    name: "Convertible Sports Car",
+    category: "convertible",
     image: p24_img,
-    new_price: 85.0,
-    old_price: 120.5,
-    description: "A high-quality skincare product to hydrate your skin."  ,
-    year: 2022// Përshkrimi i produktit
-    
+    new_price: 115.0,
+    old_price: 170.0,
+    description: "A stylish convertible sports car for a thrilling ride.",
+    year: 2022
   },
   {
     id: 25,
-    name: "Aesop Product",
-    category: "wash",
+    name: "High-End Family SUV",
+    category: "suv",
     image: p25_img,
-    new_price: 85.0,
-    old_price: 120.5,
-    description: "A high-quality skincare product to hydrate your skin.",
-    year: 2022  // Përshkrimi i produktit
+    new_price: 95.0,
+    old_price: 140.5,
+    description: "An elegant and spacious SUV perfect for family vacations.",
+    year: 2022
   },
   {
     id: 26,
-    name: "Aesop Product",
-    category: "wash",
+    name: "Sporty Luxury Sedan",
+    category: "sedan",
     image: p26_img,
     new_price: 85.0,
-    old_price: 120.5,
-    description: "A high-quality skincare product to hydrate your skin." ,
-    year: 2022 // Përshkrimi i produktit
+    old_price: 130.0,
+    description: "A sporty luxury sedan designed for a smooth driving experience.",
+    year: 2022
   },
   {
     id: 27,
-    name: "Aesop Product",
-    category: "wash",
+    name: "Electric Luxury Sedan",
+    category: "electric",
     image: p27_img,
-    new_price: 85.0,
-    old_price: 120.5,
-    description: "A high-quality skincare product to hydrate your skin." ,
-    year: 2022 // Përshkrimi i produktit
+    new_price: 130.0,
+    old_price: 180.0,
+    description: "Experience luxury and sustainability in this electric sedan.",
+    year: 2022
   },
   {
     id: 28,
-    name: "Aesop Product",
-    category: "wash",
+    name: "Classic Luxury Sedan",
+    category: "sedan",
     image: p28_img,
-    new_price: 85.0,
-    old_price: 120.5,
-    description: "A high-quality skincare product to hydrate your skin." ,
-    year: 2022 // Përshkrimi i produktit
+    new_price: 90.0,
+    old_price: 135.0,
+    description: "A classic sedan offering timeless luxury and performance.",
+    year: 2022
   },
   {
     id: 29,
-    name: "Aesop Product",
-    category: "wash",
+    name: "Electric Convertible",
+    category: "convertible",
     image: p29_img,
-    new_price: 85.0,
-    old_price: 120.5,
-    description: "A high-quality skincare product to hydrate your skin."  ,
-    year: 2022// Përshkrimi i produktit
+    new_price: 150.0,
+    old_price: 210.0,
+    description: "A modern electric convertible for eco-conscious driving with style.",
+    year: 2022
   },
   {
     id: 30,
-    name: "Aesop Product",
-    category: "wash",
+    name: "Luxury SUV",
+    category: "suv",
     image: p30_img,
-    new_price: 85.0,
-    old_price: 120.5,
-    description: "A high-quality skincare product to hydrate your skin."  ,
-    year: 2022// Përshkrimi i produktit
+    new_price: 125.0,
+    old_price: 180.0,
+    description: "A luxury SUV with space and power for all your adventures.",
+    year: 2022
   },
   {
     id: 31,
-    name: "Aesop Product",
-    category: "wash",
+    name: "Sporty Luxury Coupe",
+    category: "sports",
     image: p31_img,
-    new_price: 85.0,
-    old_price: 120.5,
-    description: "A high-quality skincare product to hydrate your skin." ,
-    year: 2022 // Përshkrimi i produktit
+    new_price: 110.0,
+    old_price: 155.0,
+    description: "A sporty luxury coupe combining performance with sleek design.",
+    year: 2022
   },
   {
     id: 32,
-    name: "Aesop Product",
-    category: "wash",
+    name: "All-Electric SUV",
+    category: "electric",
     image: p32_img,
-    new_price: 85.0,
-    old_price: 120.5,
-    description: "A high-quality skincare product to hydrate your skin." ,
-    year: 2022 // Përshkrimi i produktit
+    new_price: 140.0,
+    old_price: 190.0,
+    description: "An all-electric SUV offering impressive range and efficiency.",
+    year: 2022
   },
   {
     id: 33,
-    name: "Aesop Product",
-    category: "wash",
+    name: "Luxury Sport Sedan",
+    category: "sedan",
     image: p33_img,
-    new_price: 85.0,
-    old_price: 120.5,
-    description: "A high-quality skincare product to hydrate your skin.",
-    year: 2022  // Përshkrimi i produktit
+    new_price: 95.0,
+    old_price: 130.0,
+    description: "A luxury sport sedan with exceptional performance and comfort.",
+    year: 2022
   },
   {
     id: 34,
-    name: "Aesop Product",
-    category: "wash",
+    name: "Sporty Electric Sedan",
+    category: "electric",
     image: p34_img,
-    new_price: 85.0,
-    old_price: 120.5,
-    description: "A high-quality skincare product to hydrate your skin." ,
-    year: 2022 // Përshkrimi i produktit
+    new_price: 120.0,
+    old_price: 165.0,
+    description: "A sporty electric sedan for those who want speed and sustainability.",
+    year: 2022
   },
   {
     id: 35,
-    name: "Aesop Product",
-    category: "wash",
+    name: "Luxury Convertible",
+    category: "convertible",
     image: p35_img,
-    new_price: 85.0,
-    old_price: 120.5,
-    description: "A high-quality skincare product to hydrate your skin.", 
-    year: 2022 // Përshkrimi i produktit
+    new_price: 140.0,
+    old_price: 200.0,
+    description: "A convertible car offering both luxury and open-air driving.",
+    year: 2022
   },
   {
     id: 36,
-    name: "Rent Product",
-    category: "wash",
+    name: "Top Performance SUV",
+    category: "suv",
     image: p36_img,
-    new_price: 85.0,
-    old_price: 120.5,
-    description: "A high-quality skincare product to hydrate your skin."  ,// Përshkrimi i produktit
+    new_price: 135.0,
+    old_price: 190.0,
+    description: "A top-tier performance SUV with powerful capabilities.",
     year: 2022
-    
-  },
+  }
 ];
+
+
 
 export default all_product;
