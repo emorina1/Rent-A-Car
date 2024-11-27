@@ -5,21 +5,21 @@ body {
 }
 
 .navbar {
-    background: transparent; /* Transparent background */
+    background-color: transparent; /* Ngjyrë gri e errët për navbar-in (më e butë se e zeza e plotë) */
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 16px 32px;
-    box-shadow: 0 2px 25px rgba(0, 0, 0, 0.1); /* Shadow for emphasis */
+    box-shadow: 0 2px 25px rgba(0, 0, 0, 0.1); /* Hije e butë për navbar-in */
     width: 100%;
-    position: fixed;  /* Fixed navbar */
+    position: fixed;  /* Navbar i fiksuar në krye */
     top: 0;
     left: 0;
-    z-index: 100;  /* Ensure navbar is always on top */
+    z-index: 100;  /* Siguron që navbar-i të jetë gjithmonë mbi përmbajtjen */
 }
 
 .nav-logo img {
-    width: 80px; /* Logo size */
+    width: 80px; /* Madhësia e logos */
     height: auto;
 }
 
@@ -34,7 +34,7 @@ body {
     align-items: center;
     list-style: none;
     gap: 30px;
-    color: #171717; /* Text color */
+    color: #ffffff; /* Ngjyra e bardhë për tekstin në navbar */
     font-size: 18px;
     justify-content: end;
 }
@@ -53,16 +53,16 @@ body {
     width: 70%;
     height: 2px;
     border-radius: 10px;
-    background: #FF4141; /* Underline color */
+    background: #FF4141; /* Ngjyra e vijës poshtë menu items */
 }
 
 .nav-menu li a {
-    color: #fffefe; /* Set text color to black */
+    color: #909058; /* Teksti në të bardhë */
     transition: color 0.3s ease;
 }
 
 .navbar.scrolled .nav-menu li a {
-    color: #040303; /* Darker text color on scroll */
+    color: #0e0d0d; /* Ngjyrë më të ndritshme të bardhë kur scrollohet */
 }
 
 .nav-login-cart {
@@ -82,15 +82,15 @@ body {
     font-weight: 500;
     background: transparent;
     cursor: pointer;
-    margin-right: 50px; /* Adjust button position */
+    margin-right: 50px; /* Pozita e butonit */
 }
 
 .nav-login-cart button:active {
-    background: #121111; /* Background color on button press */
+    background: #121111; /* Ngjyra e sfondit kur shtypet butoni */
 }
 
 .nav-cart-count {
-    width: 25px; /* Increase cart count size */
+    width: 25px;
     height: 25px;
     display: flex;
     justify-content: center;
@@ -109,14 +109,14 @@ body {
 }
 
 .cart-icon {
-    width: 50px; /* Increase cart icon size */
+    width: 50px; /* Madhësia e ikonës së karrocës */
     height: auto;
     margin-left: 50px;
-    filter: brightness(0.4); /* Dim the icon */
+    filter: brightness(0.4); /* Imazhi më i zbehtë */
 }
 
 .nav_dropdown {
-    display: none; /* Hidden by default */
+    display: none; /* Ikona e dropdown e fshehur nga fillimi */
 }
 
 @media(max-width:1280px) {
@@ -124,7 +124,7 @@ body {
         padding: 12px 50px;
     }
     .nav-logo img {
-        width: 40px; /* Smaller logo for smaller screens */
+        width: 40px; /* Logo më e vogël për ekranet e vogla */
     }
     .nav-menu {
         gap: 30px;
@@ -164,25 +164,25 @@ body {
         padding: 10px 0px;
     }
     .nav_dropdown {
-        display: block; /* Show dropdown icon */
+        display: block; /* Shfaq ikona e dropdown */
         width: 30px;
         rotate: -90deg;
         transition: 0.5s;
     }
     .nav-menu {
-        display: none; /* Hide menu by default */
+        display: none; /* Fsheh menunë nga fillimi */
         height: 80px;
         width: 100%;
         position: absolute;
-        background-color: rgb(36, 35, 35); /* Dropdown background color */
+        background-color: rgb(36, 35, 35); /* Background i dropdown-it */
         justify-items: center;
         top: 50px;
     }
     .nav-menu-visible {
-        display: flex; /* Show menu when visible */
+        display: flex; /* Shfaq menunë kur bëhet e dukshme */
     }
     .nav_dropdown.open {
-        transform: rotate(90deg); /* Rotate dropdown icon when open */
+        transform: rotate(90deg); /* Rrotullon ikonën e dropdown kur është e hapur */
     }
 }
 

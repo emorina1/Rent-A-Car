@@ -1,48 +1,148 @@
-.rental-container {
+.about-container {
+  font-family: 'Arial', sans-serif;
   padding: 20px;
-  max-width: 1200px;
-  margin: auto;
+  background-color: #f5f5f5; /* Background me nuancë gri për më shumë kontrast */
+  
 }
 
-.rental-title {
-  text-align: center;
-  font-size: 2.5em;
-  margin-bottom: 20px;
-}
-
-.rental-content {
+.hero-section {
   display: flex;
-  flex-direction: column;
+  justify-content: space-between;
   align-items: center;
+  margin-bottom: 50px;
 }
 
-.rental-image-large {
+.hero-title {
+  font-size: 3rem;
+  font-weight: 700;
+  color: #333;
+  margin-bottom: 15px;
+  text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.4); /* Hije e errët për titullin */
+}
+
+.hero-description {
+  font-size: 1.2rem;
+  color: #555;
+  max-width: 600px;
+  background-color:  rgba(255, 165, 0, 0.4);
+
+  text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.3); /* Hije e lehtë për përshkrimin */
+}
+
+.hero-image {
+  width: 50%;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2), 0 6px 30px rgba(255, 165, 0, 0.5); /* Hije me ngjyrë të verdhë dhe të zezë */
+}
+
+.hero-image-content {
+  width: 100%;
+  height: auto;
+  border-radius: 15px;
+}
+
+.rental-details {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-bottom: 60px;
+}
+
+.rental-subtitle {
+  font-size: 2rem;
+  font-weight: 600;
+  color: #333;
   margin-bottom: 20px;
+  text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.3); /* Hije për nën-tituj */
 }
 
 .rental-description {
-  font-size: 1.2em;
-  text-align: center;
-  margin-bottom: 20px;
+  font-size: 1rem;
+  color: #666;
+  line-height: 1.6;
+  max-width: 700px;
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.2); /* Hije për përshkrimin */
+  background-color:  rgba(255, 165, 0, 0.4);
 }
 
 .rental-history {
   display: flex;
+  flex-direction: row;
   align-items: center;
-  margin-top: 20px;
+
 }
 
 .rental-history-image {
-  width: 100px; /* Adjust size as needed */
-  margin-right: 15px;
+  width: 300px;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 10px;
+  margin-right: 30px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3), 0 6px 20px rgba(255, 165, 0, 0.4); /* Hije për imazhin e historisë */
 }
 
-.rental-map {
-  margin-top: 40px;
+.history-text {
+  max-width: 600px;
+
+}
+
+.history-title {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #333;
+  margin-bottom: 10px;
+
+
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4); /* Hije për titullin e historisë */
+}
+
+.history-description {
+  font-size: 1rem;
+  color: #666;
+  background-color:  rgba(255, 165, 0, 0.4);
+
+}
+
+.rental-locations {
+  text-align: center;
 }
 
 .map-title {
-  text-align: center;
-  font-size: 2em;
-  margin-bottom: 20px;
+  font-size: 2rem;
+  font-weight: 600;
+  margin-bottom: 30px;
+  text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.3); /* Hije për titullin e hartës */
+}
+
+.map-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 4px 40px rgba(0, 0, 0, 0.2), 0 6px 40px rgba(255, 165, 0, 0.4); /* Hije për hartën */
+}
+
+@media (max-width: 768px) {
+  .hero-section {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .hero-image {
+    width: 100%;
+    margin-top: 20px;
+  }
+
+  .rental-details {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .rental-history {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .rental-history-image {
+    margin-bottom: 20px;
+  }
 }

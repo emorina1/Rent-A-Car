@@ -1,4 +1,4 @@
-import React, { useContext, useState, useRef } from 'react';
+import React, { useContext, useState, useRef, useEffect } from 'react';
 import './Navbar.css';
 import logo from '../Assets/Frontend_Assets/logo.png';
 import { Link } from 'react-router-dom';
@@ -8,31 +8,29 @@ import nav_dropdown from '../Assets/Frontend_Assets/nav_dropdown.png';
 const Navbar = () => {
   const [menu, setMenu] = useState("shop");
   const { getTotalCartItems } = useContext(ShopContext);
-  const menuRef = useRef(); 
+  const menuRef = useRef();
+  const [isScrolled, setIsScrolled] = useState(false); // State për të monitoruar skrollimin
 
   const dropdown_toggle = (e) => {
     menuRef.current.classList.toggle('nav-menu-visible');
     e.target.classList.toggle('open');
-  }
+  };
 
-  window.addEventListener('scroll', function() {
-    const navbar = document.querySelector('.navbar');
-    const navLinks = document.querySelectorAll('.nav-menu li a');
-    if (window.scrollY > 50) {
-        navbar.classList.add('scrolled');
-        navLinks.forEach(link => {
-            link.classList.add('scrolled-link');
-        });
-    } else {
-        navbar.classList.remove('scrolled');
-        navLinks.forEach(link => {
-            link.classList.remove('scrolled-link');
-        });
-    }
-  });
+  // Efekti për të monitoruar skrollimin dhe për të ndryshuar ngjyrën e navbarit
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 50); // Shto klasën 'scrolled' kur skrollohet më shumë se 50px
+    };
+
+    window.addEventListener('scroll', handleScroll);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll); // Pastrojmë event listener kur komponenti shkarkohet
+    };
+  }, []);
 
   return (
-    <div className='navbar'>
+    <div className={`navbar ${isScrolled ? 'scrolled' : ''}`}> {/* Shto klasën 'scrolled' kur skrollohet */}
       <div className='nav-logo'>
         <img src={logo} alt="Logo" />
       </div>
@@ -42,17 +40,17 @@ const Navbar = () => {
           <Link style={{ textDecoration: 'none' }} to='/'>Home</Link>
           {menu === "shop" ? <hr /> : null}
         </li>
-        <li onClick={() => { setMenu("hand") }}>
-          <Link style={{ textDecoration: 'none' }} to='/hand'>Services</Link>
-          {menu === "hand" ? <hr /> : null}
+        <li onClick={() => { setMenu("sedan") }}>
+          <Link style={{ textDecoration: 'none' }} to='/sedan'>Sedan</Link>
+          {menu === "sedan" ? <hr /> : null}
         </li>
-        <li onClick={() => { setMenu("skincare") }}>
-          <Link style={{ textDecoration: 'none' }} to='/skincare'>Gallery</Link>
-          {menu === "skincare" ? <hr /> : null}
+        <li onClick={() => { setMenu("sports") }}>
+          <Link style={{ textDecoration: 'none' }} to='/sports'>Sports</Link>
+          {menu === "sports" ? <hr /> : null}
         </li>
-        <li onClick={() => { setMenu("wash") }}>
-          <Link style={{ textDecoration: 'none' }} to='/wash'>Blog</Link>
-          {menu === "wash" ? <hr /> : null}
+        <li onClick={() => { setMenu("suv") }}>
+          <Link style={{ textDecoration: 'none' }} to='/suv'>SUV</Link>
+          {menu === "suv" ? <hr /> : null}
         </li>
         <li onClick={() => { setMenu("about") }}>
           <Link style={{ textDecoration: 'none' }} to='/about'>About Us</Link>
