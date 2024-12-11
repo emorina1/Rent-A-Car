@@ -1,119 +1,84 @@
 const port = 4000;
 const express = require("express");
 const app = express();
-const mysql = require("mysql");
+const mongoose = require("mongoose");
 const multer = require("multer");
 const path = require("path");
 const cors = require("cors");
+const fs = require("fs");
 
+// Middleware
 app.use(express.json());
 app.use(cors());
 
+// Lidhja me MongoDB
+const MONGO_URI = "mongodb+srv://Elsa:Elsa123@cluster0.p0esq.mongodb.net/YourDatabaseName?retryWrites=true&w=majority";
 
-const db = mysql.createConnection({
-  host: 'localhost',
-  user: 'root',
-  password: '',
-  database: 'ecommerc'
-});
+mongoose
+  .connect(MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true })
+  .then(() => console.log("Lidhja me MongoDB u realizua me sukses"))
+  .catch((err) => console.error("Gabim në lidhjen me MongoDB:", err));
 
-db.connect((err) => {
-  if (err) {
-    console.error('Nuk mund të lidhet me databazën: ', err);
-    return;
-  }
-  console.log('I lidhur me databazën MySQL');
-});
-
-// API bazike
+// Endpoint bazik
 app.get("/", (req, res) => {
   res.send("Express App është duke funksionuar");
 });
 
-// Engine për ruajtjen e imazheve
+// Kontrollo dhe krijo dosjen nëse nuk ekziston
+const uploadPath = path.join(__dirname, "upload/images");
+if (!fs.existsSync(uploadPath)) {
+  fs.mkdirSync(uploadPath, { recursive: true });
+}
+
+// Konfigurimi i Multer për ruajtjen e imazheve
 const storage = multer.diskStorage({
-  destination: './upload/images',
+  destination: uploadPath,
   filename: (req, file, cb) => {
-    return cb(null, `${file.fieldname}_${Date.now()}${path.extname(file.originalname)}`);
-  }
+    // Emri i skedarit bazohet në fushën e ngarkuar dhe kohën aktuale
+    cb(null, `${file.fieldname}_${Date.now()}${path.extname(file.originalname)}`);
+  },
 });
 
-const upload = multer({ storage: storage });
+const upload = multer({
+  storage: storage,
+  limits: { fileSize: 10 * 1024 * 1024 }, // Kjo kufizon madhësinë e skedarëve deri në 10MB
+}).single("product");
 
-app.use('/images', express.static('upload/images'));
-app.post("/upload", upload.single('product'), (req, res) => {
-  res.json({
-    success: 1,
-    image_url: `http://localhost:${port}/images/${req.file.filename}`
-  });
-});
+// Endpoint për ngarkimin e imazheve
+app.post("/upload", (req, res) => {
+  console.log("Kërkesa e mbërritur:", req.body); // Kjo do të tregojë të dhënat që janë dërguar
 
-// Endpoint për shtimin e produkteve
-app.post('/addproduct', (req, res) => {
-  const { name, image, category, new_price, old_price } = req.body;
-
-  // Përdorim AUTO_INCREMENT në databazë për ID-të
-  const query = `INSERT INTO products (name, image, category, new_price, old_price, date, available) 
-                 VALUES (?, ?, ?, ?, ?, NOW(), ?)`;
-
-  db.query(query, [name, image, category, new_price, old_price, true], (err, result) => {
+  upload(req, res, (err) => {
     if (err) {
-      console.error('Gabim gjatë shtimit të produktit: ', err);
-      return res.status(500).json({ success: false, error: err });
+      console.error("Gabim gjatë ngarkimit të skedarit:", err);
+      return res.status(500).json({ success: 0, message: "Gabim në ngarkimin e skedarit!" });
     }
-    console.log("Produkti u shtua me sukses");
-    res.json({ success: true, name });
+
+    // Verifikoni nëse skedari është ngarkuar
+    if (!req.file) {
+      console.error("Skedari mungon!"); // Shtoni një log në rast se nuk ka skedar
+      return res.status(400).json({ success: 0, message: "Skedari mungon!" });
+    }
+
+    console.log("Skedari i ngarkuar:", req.file); // Kontrollo nëse skedari është i ngarkuar
+
+    res.json({
+      success: 1,
+      image_url: `http://localhost:${port}/images/${req.file.filename}`,
+    });
   });
 });
 
-app.post('/removeproduct', (req, res) => {
-    const { id } = req.body;
-  
-    if (!id) {
-      return res.status(400).json({ success: false, message: 'ID e produktit është e domosdoshme' });
-    }
-  
-    const query = 'DELETE FROM products WHERE id = ?';
-  
-    db.query(query, [id], (err, result) => {
-      if (err) {
-        console.error('Gabim gjatë fshirjes së produktit: ', err);
-        return res.status(500).json({ success: false, error: err });
-      }
-  
-      if (result.affectedRows === 0) {
-        return res.status(404).json({ success: false, message: 'Produkti nuk është gjetur' });
-      }
-  
-      console.log("Produkti u fshi me sukses");
-      res.json({
-        success: true,
-        id
-      });
-    });
-  });
-  
-  // Krijimi i API per marrjen e të gjitha produkteve
-app.get('/allproducts', (req, res) => {
-    const query = 'SELECT * FROM products';
-    
-    db.query(query, (err, results) => {
-      if (err) {
-        console.error('Gabim gjatë marrjes së produkteve: ', err);
-        return res.status(500).json({ success: false, error: err });
-      }
-      
-      console.log("Të gjitha produktet janë marrë me sukses");
-      res.json(results);
-    });
-  });
-  
+// Endpoint për shërbimin e imazheve të ngarkuara
+app.use("/images", express.static(uploadPath));
 
-// Nisja e serverit
-app.listen(port, (error) => {
-  if (!error) {
-    console.log("Serveri po funksionon në portin " + port);
-  } else {
-    console.log("Gabim: " + error);
-  }
+// Error handling për gabimet e mundshme
+app.use((err, req, res, next) => {
+  console.error("Gabimi:", err); // Ky log do të ndihmojë në kapjen e ndonjë gabimi tjetër të mundshëm
+  res.status(500).json({ success: 0, message: "Gabim në server!" });
+});
+
+// Startimi i serverit
+app.listen(port, () => {
+  console.log(`Serveri po funksionon në http://localhost:${port}`);
 });

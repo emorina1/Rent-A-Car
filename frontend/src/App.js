@@ -8,9 +8,9 @@ import About from './Pages/About';
 import LoginSignup from './Pages/LoginSignup';
 import Cart from './Pages/Cart';
 import Footer from './Components/Footer/Footer';
-import men_banner from './Components/Assets/Frontend_Assets/banner_mens.png'
-import women_banner from './Components/Assets/Frontend_Assets/banner_women.png'
-import kid_banner from './Components/Assets/Frontend_Assets/banner_kids.png'
+import sedan_banner from './Components/Assets/Frontend_Assets/banner_sedan.png'
+import sports_banner from './Components/Assets/Frontend_Assets/banner_sports.png'
+import suv_banner from './Components/Assets/Frontend_Assets/banner_suv.png'
 function App() {
   return (
     <div >
@@ -18,9 +18,9 @@ function App() {
      <Navbar/>
      <Routes>
       <Route path='/'element={<Shop/>} />
-      <Route path='/sedan'element={<ShopCategory banner ={men_banner}category="sedan"/>} />
-      <Route path='/sports'element={<ShopCategory banner ={women_banner}category="sports"/>} />
-      <Route path='/suv'element={<ShopCategory banner ={kid_banner}category="suv"/>} />
+      <Route path='/sedan'element={<ShopCategory banner ={sedan_banner}category="sedan"/>} />
+      <Route path='/sports'element={<ShopCategory banner ={sports_banner}category="sports"/>} />
+      <Route path='/suv'element={<ShopCategory banner ={suv_banner}category="suv"/>} />
       <Route path='/about'element={<About/>} />
       <Route path='/product'element={<Product/>}>
         <Route path=':productId'element={<Product/>}/>
