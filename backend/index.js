@@ -12,8 +12,7 @@ app.use(express.json());
 app.use(cors());
 
 // Lidhja me MongoDB
-const MONGO_URI = "mongodb+srv://Elsa:Elsa123@cluster0.p0esq.mongodb.net/YourDatabaseName?retryWrites=true&w=majority";
-
+const MONGO_URI = "mongodb+srv://Elsa:Elsa123@cluster0.p0esq.mongodb.net/Rent_a_Car";
 mongoose
   .connect(MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => console.log("Lidhja me MongoDB u realizua me sukses"))
@@ -24,59 +23,97 @@ app.get("/", (req, res) => {
   res.send("Express App është duke funksionuar");
 });
 
-// Kontrollo dhe krijo dosjen nëse nuk ekziston
-const uploadPath = path.join(__dirname, "upload/images");
-if (!fs.existsSync(uploadPath)) {
-  fs.mkdirSync(uploadPath, { recursive: true });
+// Krijimi i folderit
+if (!fs.existsSync("./upload/images")) {
+  fs.mkdirSync("./upload/images", { recursive: true });
 }
 
-// Konfigurimi i Multer për ruajtjen e imazheve
+// Image Storage Engine
 const storage = multer.diskStorage({
-  destination: uploadPath,
+  destination: "./upload/images",
   filename: (req, file, cb) => {
-    // Emri i skedarit bazohet në fushën e ngarkuar dhe kohën aktuale
-    cb(null, `${file.fieldname}_${Date.now()}${path.extname(file.originalname)}`);
+    return cb(null, `${file.fieldname}_${Date.now()}${path.extname(file.originalname)}`);
   },
 });
-
-const upload = multer({
-  storage: storage,
-  limits: { fileSize: 10 * 1024 * 1024 }, // Kjo kufizon madhësinë e skedarëve deri në 10MB
-}).single("product");
+const upload = multer({ storage: storage });
 
 // Endpoint për ngarkimin e imazheve
-app.post("/upload", (req, res) => {
-  console.log("Kërkesa e mbërritur:", req.body); // Kjo do të tregojë të dhënat që janë dërguar
+app.use("/images", express.static("upload/images"));
 
-  upload(req, res, (err) => {
-    if (err) {
-      console.error("Gabim gjatë ngarkimit të skedarit:", err);
-      return res.status(500).json({ success: 0, message: "Gabim në ngarkimin e skedarit!" });
-    }
-
-    // Verifikoni nëse skedari është ngarkuar
-    if (!req.file) {
-      console.error("Skedari mungon!"); // Shtoni një log në rast se nuk ka skedar
-      return res.status(400).json({ success: 0, message: "Skedari mungon!" });
-    }
-
-    console.log("Skedari i ngarkuar:", req.file); // Kontrollo nëse skedari është i ngarkuar
-
-    res.json({
-      success: 1,
-      image_url: `http://localhost:${port}/images/${req.file.filename}`,
+app.post("/upload", upload.single("product"), (req, res) => {
+  if (!req.file) {
+    return res.status(400).json({
+      success: 0,
+      message: "Asnjë skedar nuk u dërgua në kërkesë",
     });
+  }
+
+  res.json({
+    success: 1,
+    image_url: `http://localhost:${port}/images/${req.file.filename}`,
   });
 });
 
-// Endpoint për shërbimin e imazheve të ngarkuara
-app.use("/images", express.static(uploadPath));
-
-// Error handling për gabimet e mundshme
-app.use((err, req, res, next) => {
-  console.error("Gabimi:", err); // Ky log do të ndihmojë në kapjen e ndonjë gabimi tjetër të mundshëm
-  res.status(500).json({ success: 0, message: "Gabim në server!" });
+// Skema dhe Modeli i Produktit
+const Product = mongoose.model("Product", {
+  id: { type: Number, required: true },
+  name: { type: String, required: true },
+  image: { type: String, required: true },
+  category: { type: String, required: true },
+  new_price: { type: Number, required: true },
+  old_price: { type: Number, required: true },
+  date: { type: Date, default: Date.now },
+  available: { type: Boolean, default: true },
 });
+
+// Endpoint për shtimin e produktit
+app.post("/addproduct", async (req, res) => {
+  let products =await Product.find({});
+  let id;
+  if(products.length>0)
+  {
+    let last_product_array=products.slice(-1);
+    let last_product=last_products_array[0];
+    id =last_product.id+1;
+  }
+  else{
+    id=1;
+  }
+  try {
+    const product = new Product({
+      id:id,
+      name: req.body.name,
+      image: req.body.image,
+      category: req.body.category,
+      new_price: req.body.new_price,
+      old_price: req.body.old_price,
+    });
+    await product.save();
+    res.json({
+      success: true,
+      name: req.body.name,
+    });
+  } catch (err) {
+    console.error("Gabim gjatë ruajtjes së produktit:", err);
+    res.status(500).json({ success: false, message: "Gabim gjatë ruajtjes së produktit" });
+  }
+});
+// Creating API For deleting Product
+
+app.post('/removeproduct',async(req,res)=>{
+  await Product.findOneAndDelete({id:req.body.id});
+  console.log("Removed");
+  res.json({
+    success:true,
+    name:req.body.name
+  })
+})
+//Creating API for getting all products
+app.get('/allproducts',async(req,res)=>{
+  let products= await Product.find({});
+  console.log("All Products Fetched");
+  res.send(products);
+})
 
 // Startimi i serverit
 app.listen(port, () => {
