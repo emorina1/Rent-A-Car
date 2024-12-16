@@ -5,6 +5,7 @@ const mongoose = require("mongoose");
 const multer = require("multer");
 const path = require("path");
 const cors = require("cors");
+const jwt = require('jsonwebtoken');
 const fs = require("fs");
 const { type } = require("os");
 const { error } = require("console");
@@ -70,20 +71,18 @@ const Product = mongoose.model("Product", {
 
 // Endpoint për shtimin e produktit
 app.post("/addproduct", async (req, res) => {
-  let products =await Product.find({});
+  let products = await Product.find({});
   let id;
-  if(products.length>0)
-  {
-    let last_product_array=products.slice(-1);
-    let last_product=last_products_array[0];
-    id =last_product.id+1;
-  }
-  else{
-    id=1;
+  if (products.length > 0) {
+    let last_product_array = products.slice(-1); // Corrected variable name
+    let last_product = last_product_array[0];    // Corrected usage
+    id = last_product.id + 1;
+  } else {
+    id = 1;
   }
   try {
     const product = new Product({
-      id:id,
+      id: id,
       name: req.body.name,
       image: req.body.image,
       category: req.body.category,
@@ -100,6 +99,7 @@ app.post("/addproduct", async (req, res) => {
     res.status(500).json({ success: false, message: "Gabim gjatë ruajtjes së produktit" });
   }
 });
+
 // Creating API For deleting Product
 
 app.post('/removeproduct',async(req,res)=>{
@@ -118,25 +118,26 @@ app.get('/allproducts',async(req,res)=>{
 })
 //Shchema creating for User model
 
-const Users =mongoose.model;('User',{
-  name:{
-    type:String,
+const Users = mongoose.model('User', new mongoose.Schema({
+  name: {
+    type: String,
   },
-  email:{
-    type:String,
-    unique:true,
+  email: {
+    type: String,
+    unique: true,
   },
-  password:{
-    type:String,
+  password: {
+    type: String,
   },
-  cartData:{
-    type:Object,
+  cartData: {
+    type: Object,
   },
-  date:{
-    type:Date,
-    default:Date.now,
-  }
-})
+  date: {
+    type: Date,
+    default: Date.now,
+  },
+}));
+
 //Creating Endpoint for registering the user
 app.post('/signup',async(req,res)=>{
 
