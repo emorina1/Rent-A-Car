@@ -40,19 +40,20 @@
 .booking-form {
     position: relative;
     z-index: 2;
-    background-color:transparent; /* Semi-transparent background */
-    padding: 30px; /* Increase padding to make the form larger */
+    background-color: transparent;
+    padding: 20px;
     border-radius: 8px;
-    max-width: 700px; /* Increase width to make the form wider */
-    margin-left: 1500px; /* Push the form to the far right */
-    margin-top: 20px; /* Adds space above the form */
-    font-size: 1.1em; /* Increase font size for better readability */
+    max-width: 300px; /* Zvogëlo madhësinë e formës */
+    margin-left: auto; /* Shton formën në anën e djathtë */
+    margin-right: 50px; /* Shton hapësirë nga skaji i djathtë */
+    margin-top: 20px;
+    font-size: 1em;
 }
 
 .booking-form h2 {
-    margin-bottom: 15px;
+    margin-bottom: 10px;
     color: #fff;
-    font-size: 1.5em; /* Increase title size */
+    font-size: 1.3em;
 }
 
 .booking-form label {
@@ -61,26 +62,30 @@
     color: #ddd;
 }
 
-.booking-form select {
+.booking-form select,
+.booking-form input[type="date"] {
     width: 100%;
-    padding: 10px; /* Increased padding for larger form controls */
-    margin-bottom: 15px; /* Increase space between fields */
+    padding: 8px;
+    height: 40px; /* Zvogëlo madhësinë e lartësisë */
+    margin-bottom: 10px;
     border: 1px solid #ccc;
     border-radius: 4px;
+    font-size: 0.9em;
+    box-sizing: border-box;
 }
 
 .book-button {
-    background-color: #ffc107; /* Yellow color */
+    background-color: #ffc107;
     color: #333;
-    padding: 12px 25px; /* Increase button size */
+    padding: 10px;
     border: none;
     border-radius: 4px;
     cursor: pointer;
     font-weight: bold;
     width: 100%;
-    font-size: 1.2em; /* Make the button text bigger */
+    font-size: 1em;
 }
 
 .book-button:hover {
-    background-color: #e0a800; /* Slightly darker yellow */
+    background-color: #e0a800;
 }

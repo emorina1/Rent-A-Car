@@ -6,29 +6,26 @@ const Hero = () => {
   return (
     <div className="hero" style={{ backgroundImage: `url(${carImg})` }}>
       <div className="overlay"></div>
-      {/* <div className="hero-content">
-        <h1>Most reliable cars for your journey</h1>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit
-          tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.
-        </p>
-        <button className="book-button">Book Now!</button>
-      </div> */}
-
+      
       <div className="booking-form">
         <h2>Rent a Car</h2>
-        <label>Car types</label>
-        <select>
-          <option>All Car Types</option>
-        </select>
-        <label>Car brands</label>
-        <select>
-          <option>All Car Brands</option>
-        </select>
+        
+        {/* Car models */}
         <label>Car model</label>
         <select>
           <option>All Car Models</option>
+          <option>Sedan</option>
+          <option>Sports</option>
+          <option>Suv</option>
+         
         </select>
+        
+        {/* Date range */}
+        <label>From Date</label>
+        <input type="date" />
+        <label>To Date</label>
+        <input type="date" />
+        
         <button className="book-button">Book Now</button>
       </div>
     </div>
