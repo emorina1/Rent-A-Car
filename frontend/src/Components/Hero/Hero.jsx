@@ -13,9 +13,10 @@ const Hero = () => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = async () => {
+  const handleSubmit = async (e) => {
+    e.preventDefault();
     try {
-      const response = await fetch('http://localhost:4000/bookcar', {
+      const response = await fetch('http://localhost:4000/bookings', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

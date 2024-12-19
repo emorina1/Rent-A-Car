@@ -196,16 +196,36 @@ app.post('/login', async (req, res) => {
   }
 });
 
-// Skema për rezervime
-const Booking = mongoose.model('Booking', {
+// Schema and Model for booking
+const bookingSchema = new mongoose.Schema({
   carModel: { type: String, required: true },
   fromDate: { type: Date, required: true },
   toDate: { type: Date, required: true },
   dateCreated: { type: Date, default: Date.now },
 });
 
-// Endpoint për të shtuar një rezervim të ri
-app.post('/bookcar', async (req, res) => {
+// Model for 'bookings' collection
+const Booking = mongoose.model('Booking', bookingSchema, 'bookings');  // Collection name 'bookings'
+
+// Endpoint to get all bookings
+app.get('/bookings', async (req, res) => {
+  try {
+    const allBookings = await Booking.find();
+    res.json({
+      success: true,
+      bookings: allBookings,
+    });
+  } catch (err) {
+    console.error('Error fetching bookings:', err);
+    res.status(500).json({
+      success: false,
+      message: 'Error fetching bookings.',
+    });
+  }
+});
+
+// Endpoint to add a new booking
+app.post('/bookings', async (req, res) => {
   const { carModel, fromDate, toDate } = req.body;
 
   if (!carModel || !fromDate || !toDate) {
@@ -221,11 +241,13 @@ app.post('/bookcar', async (req, res) => {
       fromDate,
       toDate,
     });
+
     await newBooking.save();
 
     res.json({
       success: true,
       message: 'Booking added successfully!',
+      booking: newBooking,
     });
   } catch (err) {
     console.error('Error creating booking:', err);
@@ -235,7 +257,6 @@ app.post('/bookcar', async (req, res) => {
     });
   }
 });
-
 // Startimi i serverit
 app.listen(port, () => {
   console.log(`Serveri po funksionon në http://localhost:${port}`);
