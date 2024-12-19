@@ -9,67 +9,91 @@ const Navbar = () => {
   const [menu, setMenu] = useState("shop");
   const { getTotalCartItems } = useContext(ShopContext);
   const menuRef = useRef();
-  const [isScrolled, setIsScrolled] = useState(false); // State për të monitoruar skrollimin
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [userName, setUserName] = useState('');
+
+  useEffect(() => {
+    // Kontrollojmë në localStorage për emrin e përdoruesit
+    const token = localStorage.getItem('auth-token');
+    const name = localStorage.getItem('userName');
+    if (token && name) {
+      setUserName(name);
+    }
+  }, []);
+
+  const logout = () => {
+    // Pas logout, largojmë të dhënat nga localStorage dhe bëjmë ridrejtim te login
+    localStorage.removeItem('auth-token');
+    localStorage.removeItem('userName');
+    setUserName('');
+    window.location.replace('/login');
+  };
 
   const dropdown_toggle = (e) => {
     menuRef.current.classList.toggle('nav-menu-visible');
     e.target.classList.toggle('open');
   };
 
-  // Efekti për të monitoruar skrollimin dhe për të ndryshuar ngjyrën e navbarit
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50); // Shto klasën 'scrolled' kur skrollohet më shumë se 50px
+      setIsScrolled(window.scrollY > 50);
     };
 
     window.addEventListener('scroll', handleScroll);
 
     return () => {
-      window.removeEventListener('scroll', handleScroll); // Pastrojmë event listener kur komponenti shkarkohet
+      window.removeEventListener('scroll', handleScroll);
     };
   }, []);
 
   return (
-    <div className={`navbar ${isScrolled ? 'scrolled' : ''}`}> {/* Shto klasën 'scrolled' kur skrollohet */}
+    <div className={`navbar ${isScrolled ? 'scrolled' : ''}`}>
       <div className='nav-logo'>
         <img src={logo} alt="Logo" />
       </div>
       <img className='nav_dropdown' onClick={dropdown_toggle} src={nav_dropdown} alt="Menu" />
       <ul ref={menuRef} className="nav-menu">
-        <li onClick={() => { setMenu("shop") }}>
+        <li onClick={() => setMenu("shop")}>
           <Link style={{ textDecoration: 'none' }} to='/'>Home</Link>
-          {menu === "shop" ? <hr /> : null}
+          {menu === "shop" && <hr />}
         </li>
-        <li onClick={() => { setMenu("sedan") }}>
+        <li onClick={() => setMenu("sedan")}>
           <Link style={{ textDecoration: 'none' }} to='/sedan'>Sedan</Link>
-          {menu === "sedan" ? <hr /> : null}
+          {menu === "sedan" && <hr />}
         </li>
-        <li onClick={() => { setMenu("sports") }}>
+        <li onClick={() => setMenu("sports")}>
           <Link style={{ textDecoration: 'none' }} to='/sports'>Sports</Link>
-          {menu === "sports" ? <hr /> : null}
+          {menu === "sports" && <hr />}
         </li>
-        <li onClick={() => { setMenu("suv") }}>
+        <li onClick={() => setMenu("suv")}>
           <Link style={{ textDecoration: 'none' }} to='/suv'>SUV</Link>
-          {menu === "suv" ? <hr /> : null}
+          {menu === "suv" && <hr />}
         </li>
-        <li onClick={() => { setMenu("about") }}>
+        <li onClick={() => setMenu("about")}>
           <Link style={{ textDecoration: 'none' }} to='/about'>About Us</Link>
-          {menu === "about" ? <hr /> : null}
+          {menu === "about" && <hr />}
         </li>
       </ul>
       <div className="nav-login-cart">
         <div className="cart-icon-container">
           <Link to='/cart'>
-            <span className='cart-icon' style={{ fontSize: '24px', lineHeight: '24px' }}>🛒</span> {/* Përdorimi i emojis për ikonën e karrocës */}
+            <span className='cart-icon' style={{ fontSize: '24px', lineHeight: '24px' }}>🛒</span>
             {getTotalCartItems() > 0 && (
               <div className="nav-cart-count">{getTotalCartItems()}</div>
             )}
           </Link>
         </div>
-        <Link to='/login'><button>Login</button></Link>
+        {userName ? (
+          <div className="user-info">
+            <span>Welcome, <strong>{userName}</strong></span>
+            <button onClick={logout} className="logout-button">Logout</button>
+          </div>
+        ) : (
+          <Link to='/login'><button>Login</button></Link>
+        )}
       </div>
     </div>
   );
-}
+};
 
 export default Navbar;

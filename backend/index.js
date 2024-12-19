@@ -139,55 +139,103 @@ const Users = mongoose.model('User', new mongoose.Schema({
 }));
 
 //Creating Endpoint for registering the user
-app.post('/signup',async(req,res)=>{
-
-  let check =await Users.findOne({email:req.body.email});
-  if(check){
-    return res.status(400).json({success:false,errors:"existing user found with same email address"})
-
-  }
-    let cart ={};
-    for(let i=0; i < 300; i++){
-      cart[i]=0;
+app.post('/signup', async (req, res) => {
+  try {
+    let check = await Users.findOne({ email: req.body.email });
+    if (check) {
+      return res.status(400).json({ success: false, errors: "Existing user found with same email address" });
     }
+
+    let cart = {};
+    for (let i = 0; i < 300; i++) {
+      cart[i] = 0;
+    }
+
     const user = new Users({
-      name:req.body.username,
-      email:req.body.email,
-      password:req.body.password,
-      cartData:cart,
-    })
+      name: req.body.username,
+      email: req.body.email,
+      password: req.body.password, // Sigurohu që ta hash fjalëkalimin për siguri!
+      cartData: cart,
+    });
     await user.save();
 
-    const data={
-      user:{
-        id:user.id
-      }
-    }
-    const token =jwt.sign(data,'secret_ecom');
-    res.json({success:true,token})
-})
-//creating endpoint for user login
-app.post('/login',async (req,res)=>{
-  let user =await Users.findOne({email:req.body.email});
-  if(user){
-    const passCompare =req.body.password ===user.password;
-    if(passCompare){
-      const data ={
-        user:{
-          id:user.id
-        }
-      }
-      const token =jwt.sign(data,'secret_ecom');
-      res.json({success:true,token});
-    }
-    else{
-      res.json({success:false,errors:"Wrong Password"});
-    }
+    const data = {
+      user: {
+        id: user.id,
+      },
+    };
+    const token = jwt.sign(data, 'secret_ecom');
+    res.json({ success: true, token, name: user.name });
+  } catch (error) {
+    console.error("Error in /signup endpoint:", error);
+    res.status(500).json({ success: false, errors: "Internal Server Error" });
   }
-  else{
-    res.json({success:false,errors:"Wrong Email Id"})
+});
+app.post('/login', async (req, res) => {
+  try {
+    const user = await Users.findOne({ email: req.body.email });
+    if (!user) {
+      return res.json({ success: false, errors: "Wrong Email Id" });
+    }
+
+    const passCompare = req.body.password === user.password; // Përdor hashing për siguri!
+    if (!passCompare) {
+      return res.json({ success: false, errors: "Wrong Password" });
+    }
+
+    const data = {
+      user: {
+        id: user.id,
+      },
+    };
+    const token = jwt.sign(data, 'secret_ecom');
+    res.json({ success: true, token, name: user.name });
+  } catch (error) {
+    console.error("Error in /login endpoint:", error);
+    res.status(500).json({ success: false, errors: "Internal Server Error" });
   }
-})
+});
+
+// Skema për rezervime
+const Booking = mongoose.model('Booking', {
+  carModel: { type: String, required: true },
+  fromDate: { type: Date, required: true },
+  toDate: { type: Date, required: true },
+  dateCreated: { type: Date, default: Date.now },
+});
+
+// Endpoint për të shtuar një rezervim të ri
+app.post('/bookcar', async (req, res) => {
+  const { carModel, fromDate, toDate } = req.body;
+
+  if (!carModel || !fromDate || !toDate) {
+    return res.status(400).json({
+      success: false,
+      message: 'All fields are required.',
+    });
+  }
+
+  try {
+    const newBooking = new Booking({
+      carModel,
+      fromDate,
+      toDate,
+    });
+    await newBooking.save();
+
+    res.json({
+      success: true,
+      message: 'Booking added successfully!',
+    });
+  } catch (err) {
+    console.error('Error creating booking:', err);
+    res.status(500).json({
+      success: false,
+      message: 'Error saving booking.',
+    });
+  }
+});
+
 // Startimi i serverit
 app.listen(port, () => {
   console.log(`Serveri po funksionon në http://localhost:${port}`);
