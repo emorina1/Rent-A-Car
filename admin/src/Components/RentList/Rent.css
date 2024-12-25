@@ -1,42 +1,43 @@
 .rent-container {
-    padding: 20px;
-  }
-  
-  .bookings-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-bottom: 20px;
-  }
-  
-  .bookings-table th,
-  .bookings-table td {
-    border: 1px solid #ddd;
-    padding: 8px;
-  }
-  
-  .bookings-table th {
-    background-color: #f4f4f4;
-    text-align: left;
-  }
-  
-  .loading,
-  .error {
-    text-align: center;
-    margin: 20px 0;
-    font-size: 18px;
-    color: red;
-  }
-  
-  form input {
-    margin-right: 10px;
-    padding: 8px;
-  }
-  
-  form button {
-    padding: 8px 12px;
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    cursor: pointer;
-  }
-  
+  padding: 20px;
+}
+
+.bookings-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+}
+
+.bookings-table th,
+.bookings-table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+.bookings-table th {
+  background-color: #f4f4f4;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  max-width: 400px;
+  gap: 10px;
+}
+
+input,
+button {
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+button {
+  background-color: #4CAF50;
+  color: white;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #45a049;
+}

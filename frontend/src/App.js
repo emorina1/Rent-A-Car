@@ -6,7 +6,7 @@ import Product from './Pages/Product';
 import ShopCategory from './Pages/ShopCategory';
 import About from './Pages/About';
 import LoginSignup from './Pages/LoginSignup';
-import Cart from './Pages/Cart';
+
 import Footer from './Components/Footer/Footer';
 import sedan_banner from './Components/Assets/Frontend_Assets/banner_sedan.png'
 import sports_banner from './Components/Assets/Frontend_Assets/banner_sports.png'
@@ -25,7 +25,7 @@ function App() {
       <Route path='/product'element={<Product/>}>
         <Route path=':productId'element={<Product/>}/>
       </Route>
-      <Route path='/cart'element={<Cart/>} />
+    
       <Route path='/login'element={<LoginSignup/>} />
      </Routes>
      <Footer/>

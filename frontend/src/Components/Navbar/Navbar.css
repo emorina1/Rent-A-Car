@@ -5,21 +5,21 @@ body {
 }
 
 .navbar {
-    background-color: transparent; /* Ngjyrë gri e errët për navbar-in (më e butë se e zeza e plotë) */
+    background-color: transparent;
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 16px 32px;
-    box-shadow: 0 2px 25px rgba(0, 0, 0, 0.1); /* Hije e butë për navbar-in */
+    box-shadow: 0 2px 25px rgba(0, 0, 0, 0.1);
     width: 100%;
-    position: fixed;  /* Navbar i fiksuar në krye */
+    position: fixed;
     top: 0;
     left: 0;
-    z-index: 100;  /* Siguron që navbar-i të jetë gjithmonë mbi përmbajtjen */
+    z-index: 100;
 }
 
 .nav-logo img {
-    width: 80px; /* Madhësia e logos */
+    width: 80px;
     height: auto;
 }
 
@@ -34,7 +34,7 @@ body {
     align-items: center;
     list-style: none;
     gap: 30px;
-    color: #ffffff; /* Ngjyra e bardhë për tekstin në navbar */
+    color: #ffffff;
     font-size: 18px;
     justify-content: end;
 }
@@ -53,55 +53,16 @@ body {
     width: 70%;
     height: 2px;
     border-radius: 10px;
-    background: #FF4141; /* Ngjyra e vijës poshtë menu items */
+    background: #FF4141;
 }
 
 .nav-menu li a {
-    color: #909058; /* Teksti në të bardhë */
+    color: #909058;
     transition: color 0.3s ease;
 }
 
 .navbar.scrolled .nav-menu li a {
-    color: #0e0d0d; /* Ngjyrë më të ndritshme të bardhë kur scrollohet */
-}
-
-.nav-login-cart {
-    display: flex;
-    align-items: center;
-    gap: 30px;
-}
-
-.nav-login-cart button {
-    width: 100px;
-    height: 50px;
-    outline: none;
-    border: 1px solid #b9b1b1;
-    border-radius: 50px;
-    color: #7f7878;
-    font-size: 18px;
-    font-weight: 500;
-    background: transparent;
-    cursor: pointer;
-    margin-right: 50px; /* Pozita e butonit */
-}
-
-.nav-login-cart button:active {
-    background: #121111; /* Ngjyra e sfondit kur shtypet butoni */
-}
-
-.nav-cart-count {
-    width: 25px;
-    height: 25px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: -30px;
-    margin-left: -50px;
-    border-radius: 10px;
-    font-size: 12px;
-    background-color: red;
-    color: #7f7878;
-    position: relative;
+    color: #0e0d0d;
 }
 
 .cart-icon-container {
@@ -109,22 +70,68 @@ body {
 }
 
 .cart-icon {
-    width: 50px; /* Madhësia e ikonës së karrocës */
+    width: 50px;
     height: auto;
     margin-left: 50px;
-    filter: brightness(0.4); /* Imazhi më i zbehtë */
+    filter: brightness(0.4);
 }
 
 .nav_dropdown {
-    display: none; /* Ikona e dropdown e fshehur nga fillimi */
+    display: none;
 }
+
+.user-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #ffffff;
+}
+
+
+.nav-login-cart {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start; /* Aligns items to the left */
+    width: 100%;
+    position: absolute; /* Positions the container absolutely */
+    left: 20px; /* Adjust to the left side */
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #ffffff;
+}
+
+.logout-button {
+    background-color: #FF4141;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.logout-button:hover {
+    background-color: #e03e3e;
+    transform: translateY(-2px);
+}
+
+.logout-button:active {
+    transform: translateY(0);
+}
+
 
 @media(max-width:1280px) {
     .navbar {
         padding: 12px 50px;
     }
     .nav-logo img {
-        width: 40px; /* Logo më e vogël për ekranet e vogla */
+        width: 40px;
     }
     .nav-menu {
         gap: 30px;
@@ -164,31 +171,31 @@ body {
         padding: 10px 0px;
     }
     .nav_dropdown {
-        display: block; /* Shfaq ikona e dropdown */
+        display: block;
         width: 30px;
         rotate: -90deg;
         transition: 0.5s;
     }
     .nav-menu {
-        display: none; /* Fsheh menunë nga fillimi */
+        display: none;
         height: 80px;
         width: 100%;
         position: absolute;
-        background-color: rgb(36, 35, 35); /* Background i dropdown-it */
+        background-color: rgb(36, 35, 35);
         justify-items: center;
         top: 50px;
     }
     .nav-menu-visible {
-        display: flex; /* Shfaq menunë kur bëhet e dukshme */
+        display: flex;
     }
     .nav_dropdown.open {
-        transform: rotate(90deg); /* Rrotullon ikonën e dropdown kur është e hapur */
+        transform: rotate(90deg);
     }
 }
 
 @media(max-width:500px) {
     .navbar {
-        width: 100%; /* Adjust navbar width */
+        width: 100%;
         gap: 0;
     }
     .nav-logo {
@@ -197,8 +204,5 @@ body {
     .nav-menu {
         height: 70px;
         top: 50px;
-    }
-    .nav-login-cart {
-        transform: scale(0.8);
     }
 }

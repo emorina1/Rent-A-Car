@@ -1,13 +1,12 @@
-import React, { useContext, useState, useRef, useEffect } from 'react';
+import React, {  useState, useRef, useEffect } from 'react';
 import './Navbar.css';
 import logo from '../Assets/Frontend_Assets/logo.png';
 import { Link } from 'react-router-dom';
-import { ShopContext } from '../../Context/ShopContext';
+
 import nav_dropdown from '../Assets/Frontend_Assets/nav_dropdown.png';
 
 const Navbar = () => {
   const [menu, setMenu] = useState("shop");
-  const { getTotalCartItems } = useContext(ShopContext);
   const menuRef = useRef();
   const [isScrolled, setIsScrolled] = useState(false);
   const [userName, setUserName] = useState('');
@@ -74,15 +73,8 @@ const Navbar = () => {
           {menu === "about" && <hr />}
         </li>
       </ul>
-      <div className="nav-login-cart">
-        <div className="cart-icon-container">
-          <Link to='/cart'>
-            <span className='cart-icon' style={{ fontSize: '24px', lineHeight: '24px' }}>🛒</span>
-            {getTotalCartItems() > 0 && (
-              <div className="nav-cart-count">{getTotalCartItems()}</div>
-            )}
-          </Link>
-        </div>
+     
+     
         {userName ? (
           <div className="user-info">
             <span>Welcome, <strong>{userName}</strong></span>
@@ -92,7 +84,7 @@ const Navbar = () => {
           <Link to='/login'><button>Login</button></Link>
         )}
       </div>
-    </div>
+ 
   );
 };
 
